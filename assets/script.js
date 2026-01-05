@@ -34,20 +34,22 @@
 
 // Resource Finder Logic
 (function () {
-  let selectedProfile = null;
-  let selectedApproach = null;
-  let selectedGoal = null;
-  let resourceDataObj = null;
+  // Wait for DOM if not ready, otherwise execute immediately
+  function initFinder() {
+    let selectedProfile = null;
+    let selectedApproach = null;
+    let selectedGoal = null;
+    let resourceDataObj = null;
 
-  // Load resource data from embedded JSON
-  const dataEl = document.getElementById('resourceData');
-  if (dataEl) {
-    try {
-      resourceDataObj = JSON.parse(dataEl.textContent);
-    } catch (e) {
-      console.error('Failed to parse resource data:', e);
+    // Load resource data from embedded JSON
+    const dataEl = document.getElementById('resourceData');
+    if (dataEl) {
+      try {
+        resourceDataObj = JSON.parse(dataEl.textContent);
+      } catch (e) {
+        console.error('Failed to parse resource data:', e);
+      }
     }
-  }
 
   // Selection items
   const finderItems = document.querySelectorAll('.finder-item');
@@ -190,4 +192,9 @@
 
     resultsDiv.style.display = 'block';
   }
+  
+  } // end initFinder
+  
+  // Run immediately since script is at bottom of body
+  initFinder();
 })();
