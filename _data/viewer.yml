@@ -48,12 +48,28 @@ quick_start:
     content: "Select a database and click <strong>Launch Omniboard</strong>. Access it in your browser via the printed link."
 
 requirements:
-  - label: "Python"
-    value: "Python 3.7+ (if running as script)"
-  - label: "Docker"
-    value: "Docker Desktop must be running"
-  - label: "MongoDB"
-    value: "Local MongoDB instance running"
+  title: "What you need"
+  items:
+    docker:
+      title: "Docker Desktop"
+      icon: "fa-brands fa-docker"
+      description: "Docker must be running to launch Omniboard in a container."
+      link: "https://docs.docker.com/get-docker/"
+      link_text: "Download Docker"
+    
+    altardocker:
+      title: "AltarDocker Stack"
+      icon: "fa-solid fa-cubes"
+      description: "Running MongoDB instance with Sacred experiments. AltarDocker provides this infrastructure."
+      link: "docker"
+      link_text: "Go to AltarDocker"
+    
+    omniboard:
+      title: "Omniboard Knowledge"
+      icon: "fa-solid fa-chart-line"
+      description: "Understanding Omniboard's interface helps you navigate and visualize experiments effectively."
+      link: "https://vivekratnavel.github.io/omniboard/"
+      link_text: "Read Docs"
 
 features_list:
   title: "App Features"

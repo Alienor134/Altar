@@ -40,7 +40,7 @@ quick_start:
 
 default_urls:
   - label: "MongoDB"
-    value: "<code>mongodb://localhost:27077</code>"
+    value: "<code>mongodb://localhost:27017</code>"
   - label: "Omniboard"
     value: "<code>http://localhost:9030</code>"
   - label: "AltarExtractor"

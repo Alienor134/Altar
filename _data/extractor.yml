@@ -50,6 +50,30 @@ quick_start:
   - title: "Connect to MongoDB"
     content: "Enter your MongoDB credentials or paste a full URI. Click <strong>Connect</strong> to start browsing experiments."
 
+requirements:
+  title: "What you need"
+  items:
+    altardocker:
+      title: "AltarDocker Stack"
+      icon: "fa-solid fa-cubes"
+      description: "Running MongoDB instance with Sacred experiments. Best used with the full AltarDocker stack."
+      link: "docker"
+      link_text: "Go to AltarDocker"
+    
+    incense:
+      title: "Incense (for scripts)"
+      icon: "fa-solid fa-code"
+      description: "If you prefer Python scripts over the web UI, use Incense to query experiments programmatically."
+      link: "https://github.com/JarnoRFB/incense"
+      link_text: "View on GitHub"
+    
+    pygwalker:
+      title: "PyGWalker Understanding"
+      icon: "fa-solid fa-chart-simple"
+      description: "AltarExtractor uses PyGWalker for interactive visualization. Knowing its features enhances your data exploration."
+      link: "https://docs.kanaries.net/pygwalker"
+      link_text: "Read Docs"
+
 environment_vars:
   - label: "PORT"
     value: "Port the app listens on (default: <code>8050</code>)"

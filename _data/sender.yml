@@ -49,6 +49,30 @@ quick_start:
   - title: "Select and send"
     content: "Choose an experiment folder, map files to data types, and click <strong>Send experiment</strong>."
 
+requirements:
+  title: "What you need"
+  items:
+    altardocker:
+      title: "AltarDocker Stack"
+      icon: "fa-solid fa-cubes"
+      description: "Running MongoDB and optionally MinIO for storage. AltarDocker sets up this infrastructure."
+      link: "docker"
+      link_text: "Go to AltarDocker"
+    
+    sacred:
+      title: "Sacred Understanding"
+      icon: "fa-solid fa-book"
+      description: "Familiarity with Sacred's data model helps you map your experiment files correctly."
+      link: "https://sacred.readthedocs.io/"
+      link_text: "Read Sacred Docs"
+    
+    viewer:
+      title: "AltarViewer (optional)"
+      icon: "fa-solid fa-tv"
+      description: "Use AltarViewer to visualize your uploaded experiments in Omniboard."
+      link: "viewer"
+      link_text: "Go to AltarViewer"
+
 file_categories:
   - label: "Config"
     value: "Experiment configuration (JSON, CSV, Excel)"
