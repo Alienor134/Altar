@@ -19,3 +19,7 @@ Thumbs.db
 *.swp
 *.swo
 *~
+
+# Node
+node_modules/
+assets/node_modules/

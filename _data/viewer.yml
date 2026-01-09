@@ -1,12 +1,11 @@
 meta:
   title: "AltarViewer — Omniboard Launcher"
-  description: "Desktop app to connect to your databases and open the interface to browse and visualize experiments."
+  description: "Web app to connect to your MongoDB experiments and launch Omniboard dashboards."
 
 hero:
   icon: "fa-solid fa-tv"
   title: "AltarViewer"
-  subtitle: "Desktop app to connect to your databases and open the interface to browse and visualize experiments."
-  image: "https://raw.githubusercontent.com/Alienor134/launch_omniboard/main/image_ctk.png"
+  subtitle: "Web app to connect to your MongoDB experiments and open Omniboard in one click."
   primary_cta:
     text: "Quick start"
     link: "#quick-start"
@@ -15,37 +14,9 @@ hero:
     link: "https://github.com/DreamRepo/AltarViewer/releases"
 
 features:
-  - icon: "fa-solid fa-plug"
-    title: "Connect to MongoDB"
-    description: "Enter the port of your local MongoDB instance and connect to list available databases."
-  - icon: "fa-solid fa-database"
-    title: "Select Database"
-    description: "Choose from your available databases to launch Omniboard with the selected database."
-  - icon: "fa-brands fa-docker"
-    title: "Docker Integration"
-    description: "Automatically starts Omniboard in a Docker container with proper configuration."
-  - icon: "fa-solid fa-window-maximize"
-    title: "User-Friendly GUI"
-    description: "Simple graphical interface built with CustomTkinter for easy interaction."
-  - icon: "fa-solid fa-link"
-    title: "Browser Launch"
-    description: "Prints a clickable link to access Omniboard in your browser after launch."
-  - icon: "fa-solid fa-broom"
-    title: "Container Cleanup"
-    description: "Clean up Omniboard Docker containers with a single button click."
-
-quick_start:
-  - title: "Download the executable"
-    content: "Download the latest release from <a href=\"https://github.com/Alienor134/launch_omniboard/releases\">GitHub Releases</a> or run as a Python script (see below)."
-  - title: "Run as Python script"
-    code: |
-      pip install pymongo customtkinter
-      python omniboard_launch.py
-    content: "Install dependencies and run the script directly."
-  - title: "Connect to MongoDB"
-    content: "Enter your MongoDB port (default: 27017) and click <strong>Connect</strong> to list databases."
-  - title: "Launch Omniboard"
-    content: "Select a database and click <strong>Launch Omniboard</strong>. Access it in your browser via the printed link."
+  - icon: "fa-solid fa-chart-line"
+    title: "Visualize Sacred databases online"
+    description: "Open your Sacred experiment databases in Omniboard via a simple web interface."
 
 requirements:
   title: "What you need"
@@ -53,32 +24,56 @@ requirements:
     docker:
       title: "Docker Desktop"
       icon: "fa-brands fa-docker"
-      description: "Docker must be running to launch Omniboard in a container."
+      description: "Install Docker Desktop and ensure it is running."
       link: "https://docs.docker.com/get-docker/"
       link_text: "Download Docker"
-    
-    altardocker:
-      title: "AltarDocker Stack"
-      icon: "fa-solid fa-cubes"
-      description: "Running MongoDB instance with Sacred experiments. AltarDocker provides this infrastructure."
-      link: "docker"
-      link_text: "Go to AltarDocker"
-    
-    omniboard:
-      title: "Omniboard Knowledge"
-      icon: "fa-solid fa-chart-line"
-      description: "Understanding Omniboard's interface helps you navigate and visualize experiments effectively."
-      link: "https://vivekratnavel.github.io/omniboard/"
-      link_text: "Read Docs"
+    compass:
+      title: "MongoDB Compass"
+      icon: "fa-solid fa-database"
+      description: "Install MongoDB Compass to inspect and test connections to your MongoDB instance."
+      link: "https://www.mongodb.com/products/compass"
+      link_text: "Download MongoDB Compass"
+    sacred:
+      title: "Sacred-formatted data"
+      icon: "fa-solid fa-book"
+      description: "Your experiments should be logged using the Sacred format so Omniboard and AltarViewer can read them."
+      link: "https://sacred.readthedocs.io/"
+      link_text: "Sacred Docs"
+
+quick_start:
+  - title: "Install option 1 — Executable"
+    content: "Download the latest platform-specific launcher from <a href=\"https://github.com/DreamRepo/AltarViewer/releases\">GitHub Releases</a> and run it."
+
+  - title: "Install option 2 — Python app"
+    code: |
+      pip install -r requirements.txt
+      python -m src.main
+    content: "Run the Python application directly from the AltarViewer source code."
+
+  - title: "Install option 3 — Docker image"
+    code: |
+      docker pull alienor134/altarviewer:latest
+      docker run -d \
+        -p 8060:8060 \
+        -v /var/run/docker.sock:/var/run/docker.sock \
+        -e MONGO_DEFAULT_URL="mongodb://<mongo-host>:27017/" \
+        --name altarviewer \
+        alienor134/altarviewer:latest
+    content: "Run the standalone AltarViewer Docker image. Replace <code>&lt;mongo-host&gt;</code> with the hostname where MongoDB is reachable from the container (for example <code>host.docker.internal</code> on Docker Desktop)."
+
+  - title: "Install option 4 — Docker Compose"
+    code: |
+      docker compose -f path/to/your/folder/docker-compose_default.yml up -d
+    content: "Use the AltarDocker stack to bring up MongoDB and MinIO with Docker Compose, then connect AltarViewer to that MongoDB instance."
+
+  - title: "Connect to MongoDB"
+    content: "Choose between connecting by port (default: 27017) or by full MongoDB URL, then click <strong>Connect</strong> to list databases."
+  - title: "Launch Omniboard"
+    content: "Select a database and click <strong>Launch Omniboard</strong>. Open Omniboard using the links shown in the AltarViewer UI."
 
 features_list:
-  title: "App Features"
-  items:
-    - "Port selection: Enter the port of your local MongoDB (default: 27017)"
-    - "Connect: Lists all available databases"
-    - "Database selection: Select a database to enable the Launch Omniboard button"
-    - "Launch Omniboard: Starts Omniboard in Docker and prints a clickable link"
-    - "Clear Omniboard Docker Containers: Removes all Omniboard containers started by this app"
+  title: ""
+  items: []
 
 related_tools:
   - icon: "fa-solid fa-cubes"

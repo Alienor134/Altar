@@ -192,6 +192,13 @@ html, body {
   border-radius: 12px;
   padding: 12px;
   box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.step:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-color: var(--brand);
 }
 .step-num {
   width: 36px;
@@ -204,7 +211,19 @@ html, body {
   font-weight: 700;
 }
 .step h4 { margin: 2px 0 4px; font-size: 16px; }
-.step p { margin: 0; color: var(--muted); }
+.step p { 
+  margin: 0; 
+  color: var(--muted);
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.3s ease, margin-top 0.3s ease;
+}
+.step:hover p {
+  max-height: 500px;
+  opacity: 1;
+  margin-top: 8px;
+}
 
 /* Footer */
 .site-footer {
@@ -682,8 +701,9 @@ code {
 
 .finder-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 .finder-compact {
@@ -839,11 +859,13 @@ code {
   border: 1px solid var(--stroke);
   border-radius: 8px;
   transition: all 0.2s ease;
+  cursor: pointer;
 }
 
 .resource-card:hover {
   border-color: var(--brand);
   box-shadow: var(--shadow);
+  transform: translateY(-2px);
 }
 
 .resource-number {
@@ -900,8 +922,12 @@ code {
 
 .resource-description {
   color: var(--muted);
-  margin: 0 0 1rem 0;
   line-height: 1.6;
+  margin: 0 0 1rem 0;
+}
+
+.resource-card .btn {
+  display: inline-flex;
 }
 
 .results-footer {

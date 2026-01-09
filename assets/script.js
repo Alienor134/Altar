@@ -39,6 +39,7 @@
     let selectedProfile = null;
     let selectedApproach = null;
     let selectedGoal = null;
+    let selectedDetail = 'detailed'; // Default to detailed
     let resourceDataObj = null;
 
     // Load resource data from embedded JSON
@@ -125,6 +126,11 @@
         document.querySelectorAll('.finder-item[data-type="goal"]').forEach(i => 
           i.classList.remove('selected'));
         selectedGoal = id;
+      } else if (type === 'detail') {
+        // Deselect other detail levels
+        document.querySelectorAll('.finder-item[data-type="detail"]').forEach(i => 
+          i.classList.remove('selected'));
+        selectedDetail = id;
       }
 
       item.classList.add('selected');
@@ -172,6 +178,9 @@
       const res = resourceDataObj.resources[id];
       if (!res) return;
 
+      // Choose description based on detail level
+      const descriptionText = selectedDetail === 'quick' ? res.short_description : res.description;
+
       const card = document.createElement('div');
       card.className = 'resource-card';
       card.innerHTML = `
@@ -181,7 +190,7 @@
             <i class="${res.icon}"></i>
             <h4>${res.title}</h4>
           </div>
-          <p class="resource-description">${res.description}</p>
+          <p class="resource-description">${descriptionText}</p>
           <a href="${res.link}" class="btn btn-link" target="${res.link.startsWith('http') ? '_blank' : '_self'}">
             ${res.link_text} <i class="fa-solid fa-arrow-right"></i>
           </a>

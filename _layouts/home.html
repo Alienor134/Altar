@@ -11,6 +11,9 @@ layout: default
     <div class="cta">
       <a class="btn btn-primary" href="{{ data.hero.primary_cta.link }}">{{ data.hero.primary_cta.text }}</a>
       <a class="btn btn-secondary" href="{{ data.hero.secondary_cta.link }}">{{ data.hero.secondary_cta.text }}</a>
+      {% if data.hero.tertiary_cta %}
+      <a class="btn btn-secondary" href="{{ data.hero.tertiary_cta.link }}">{{ data.hero.tertiary_cta.text }}</a>
+      {% endif %}
     </div>
   </div>
   <div class="hero-art" aria-hidden="true">
@@ -28,6 +31,7 @@ layout: default
     
     <div class="finder-container">
       <div class="finder-selections">
+        <!-- First Row: I am a / I want to -->
         <div class="finder-grid">
           <!-- Profile Selection -->
           <div class="finder-group-compact">
@@ -58,7 +62,10 @@ layout: default
               {% endfor %}
             </ul>
           </div>
+        </div>
 
+        <!-- Second Row: I prefer / Show me -->
+        <div class="finder-grid">
           <!-- Approach Selection -->
           <div class="finder-group-compact">
             <label class="finder-label-compact">
@@ -69,6 +76,21 @@ layout: default
               <li class="finder-item" data-type="approach" data-id="{{ approach.id }}">
                 <span class="finder-check"><i class="fa-solid fa-check"></i></span>
                 <span class="finder-text">{{ approach.label }}</span>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          <!-- Detail Level Selection -->
+          <div class="finder-group-compact">
+            <label class="finder-label-compact">
+              <i class="fa-solid fa-info-circle"></i> Show me:
+            </label>
+            <ul class="finder-list">
+              {% for level in data.resource_finder.detail_levels %}
+              <li class="finder-item" data-type="detail" data-id="{{ level.id }}">
+                <span class="finder-check"><i class="fa-solid fa-check"></i></span>
+                <span class="finder-text">{{ level.label }}</span>
               </li>
               {% endfor %}
             </ul>
@@ -107,6 +129,7 @@ layout: default
           "{{ res[0] }}": {
             "title": "{{ res[1].title }}",
             "icon": "{{ res[1].icon }}",
+            "short_description": "{{ res[1].short_description }}",
             "description": "{{ res[1].description }}",
             "link": "{{ res[1].link | relative_url }}",
             "link_text": "{{ res[1].link_text }}"
@@ -195,6 +218,22 @@ layout: default
     <h2 class="section-title">{{ data.quick_start.title }}</h2>
     <div class="steps">
       {% for step in data.quick_start.steps %}
+      <div class="step">
+        <div class="step-num">{{ forloop.index }}</div>
+        <div class="step-body">
+          <h4>{{ step.title }}</h4>
+          <p>{{ step.description }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- QUICK START NON-CODER -->
+  <section id="quickstart-noncoder" class="section">
+    <h2 class="section-title">{{ data.quick_start_noncoder.title }}</h2>
+    <div class="steps">
+      {% for step in data.quick_start_noncoder.steps %}
       <div class="step">
         <div class="step-num">{{ forloop.index }}</div>
         <div class="step-body">

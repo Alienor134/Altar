@@ -48,6 +48,22 @@ header_class: app-header
     </div>
   </section>
 
+  <!-- REQUIREMENTS (optional) -->
+  {% if data.requirements and data.requirements.items %}
+  <section class="section">
+    <h2 class="section-title">{{ data.requirements.title | default: "Requirements" }}</h2>
+    <div class="info-table">
+      {% for pair in data.requirements.items %}
+      {% assign item = pair[1] %}
+      <div class="info-row">
+        <span class="info-label">{{ item.title }}</span>
+        <span class="info-value">{{ item.description }}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
   <!-- QUICK START -->
   {% if data.quick_start %}
   <section id="quick-start" class="section">
@@ -101,21 +117,6 @@ header_class: app-header
     <h2 class="section-title">Default URLs</h2>
     <div class="info-table">
       {% for item in data.default_urls %}
-      <div class="info-row">
-        <span class="info-label">{{ item.label }}</span>
-        <span class="info-value">{{ item.value }}</span>
-      </div>
-      {% endfor %}
-    </div>
-  </section>
-  {% endif %}
-
-  <!-- REQUIREMENTS (optional) -->
-  {% if data.requirements %}
-  <section class="section alt">
-    <h2 class="section-title">Requirements</h2>
-    <div class="info-table">
-      {% for item in data.requirements %}
       <div class="info-row">
         <span class="info-label">{{ item.label }}</span>
         <span class="info-value">{{ item.value }}</span>
