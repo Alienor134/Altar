@@ -89,7 +89,7 @@ pyinstaller AltarSender.spec
 # AltarViewer
 cd AltarViewer
 pip install -r requirements-dev.txt
-pyinstaller OmniboardLauncher.spec
+pyinstaller AltarViewer.spec
 ```
 
 Outputs in `dist/` directory.

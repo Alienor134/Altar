@@ -216,6 +216,40 @@ GitHub Pages automatically builds and deploys when you push to the `main` branch
 - **Build time**: Usually 1-3 minutes after push
 - **View build status**: Repository → Actions tab
 
+### Submodules and Embedded READMEs
+
+Some app pages (e.g., AltarSender, AltarExtractor, AltarViewer) embed the README from their submodules using a Jekyll include. This keeps the docs in sync with each tool’s own repository.
+
+- The page front matter sets:
+  - `readme_path: "AltarSender/README.md"` (or the appropriate submodule path)
+  - The layout includes `submodule_readme.html`, which renders that file in-place
+- Submodules are excluded from direct publishing, but `include_relative` reads their README contents for rendering
+
+To work with submodules:
+
+1. Clone with submodules:
+  ```bash
+  git clone https://github.com/DreamRepo/Altar.git --recurse-submodules
+  ```
+2. If already cloned, initialize and update:
+  ```bash
+  git submodule update --init --recursive
+  ```
+3. To pull latest submodule content (e.g., to refresh embedded READMEs):
+  ```bash
+  git submodule update --remote --recursive
+  git commit -am "chore: update submodules"
+  git push
+  ```
+
+CI note (GitHub Actions): ensure the checkout step fetches submodules so the README includes render correctly:
+
+```yaml
+- uses: actions/checkout@v4
+  with:
+   submodules: true
+```
+
 ### Deployment Configuration
 
 In [`_config.yml`](_config.yml):

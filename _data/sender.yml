@@ -1,34 +1,40 @@
 meta:
-  title: "AltarSender — Experiment Sender to Sacred"
-  description: "GUI to map experiment folders and send runs to Sacred (MongoDB) and artifacts to MinIO."
+  title: "AltarSender — Experiment Sender (Sacred format)"
+  description: "GUI to map experiment folders and send runs to MongoDB in Sacred-compatible format; artifacts to MinIO (optional)."
 
 hero:
   icon: "fa-solid fa-paper-plane"
   title: "AltarSender"
-  subtitle: "A <strong>desktop GUI</strong> to map experiment folders and send runs to <strong>Sacred (MongoDB)</strong> and artifacts to <strong>MinIO</strong> or local storage."
+  subtitle: "A <strong>desktop GUI</strong> to map experiment folders and send runs to <strong>MongoDB</strong> in a <strong>Sacred‑compatible</strong> format. Artifacts to <strong>MinIO</strong> (optional) or local storage."
   primary_cta:
     text: "Features"
     link: "#features"
   secondary_cta:
     text: "View source"
     link: "https://github.com/DreamRepo/AltarSender"
+  tertiary_cta:
+    text: "Download Release"
+    link: "https://github.com/DreamRepo/AltarSender/releases"
 
 features:
   - icon: "fa-solid fa-folder-tree"
     title: "Map experiment folders"
-    description: "Select folders and map files to Sacred data types: config, results, metrics, artifacts."
+    description: "Select folders and map files to Sacred‑compatible data types: config, results, metrics, artifacts."
   - icon: "fa-solid fa-database"
-    title: "Send to Sacred"
-    description: "Push experiment metadata, configs, results, and metrics to MongoDB Sacred."
+    title: "Send to MongoDB (Sacred format)"
+    description: "Store experiment metadata, configs, results, and metrics in MongoDB using the Sacred schema (works with Omniboard)."
   - icon: "fa-solid fa-cloud-arrow-up"
     title: "Upload to MinIO"
-    description: "Send large raw data files to S3-compatible MinIO storage."
+    description: "Optionally upload large raw data files to S3‑compatible MinIO storage; otherwise keep them on local/network storage."
   - icon: "fa-solid fa-copy"
     title: "Batch send"
     description: "Send multiple experiments with the same folder structure in one go."
   - icon: "fa-solid fa-file-code"
     title: "Multiple formats"
     description: "Supports JSON, CSV, and Excel files for configs, results, and metrics."
+  - icon: "fa-solid fa-wand-magic-sparkles"
+    title: "Smart filename → config"
+    description: "Automatically extract parameters from filenames and folder names (e.g., subject=S01, cond=stimA) and inject them into the experiment config."
   - icon: "fa-solid fa-hard-drive"
     title: "Local storage"
     description: "Optionally save raw data to local or network paths instead of MinIO."
@@ -36,12 +42,15 @@ features:
 requirements:
   title: "What you need"
   items:
-    altardocker:
-      title: "AltarDocker Stack"
-      icon: "fa-solid fa-cubes"
-      description: "Running MongoDB and optionally MinIO for storage. AltarDocker sets up this infrastructure."
-      link: "docker"
-      link_text: "Go to AltarDocker"
+    mongodb:
+      title: "MongoDB (required)"
+      icon: "fa-solid fa-database"
+      description: "A running MongoDB instance to store experiments in the Sacred-compatible schema."
+
+    minio:
+      title: "MinIO (optional)"
+      icon: "fa-solid fa-cloud"
+      description: "Optional S3-compatible storage for large raw files. You can also use local or network storage."
     
     sacred:
       title: "Sacred Understanding"
@@ -114,10 +123,10 @@ viewing_results:
     value: "Omniboard → <strong>Run Info</strong> → dataFiles"
 
 related_tools:
-  - icon: "fa-solid fa-cubes"
-    title: "AltarDocker"
-    description: "Deploy MongoDB, MinIO, Omniboard, and AltarExtractor with Docker Compose."
-    link: "docker"
+  - icon: "fa-solid fa-tv"
+    title: "AltarViewer"
+    description: "Launch Omniboard and explore your uploaded experiments."
+    link: "viewer"
   - icon: "fa-solid fa-magnifying-glass-chart"
     title: "AltarExtractor"
     description: "Browse and filter Sacred experiments with a modern web UI."

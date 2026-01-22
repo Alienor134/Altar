@@ -12,6 +12,9 @@ hero:
   secondary_cta:
     text: "View source"
     link: "https://github.com/DreamRepo/AltarExtractor"
+  tertiary_cta:
+    text: "Download Release"
+    link: "https://github.com/DreamRepo/AltarExtractor/releases"
 
 features:
   - icon: "fa-solid fa-plug"
@@ -39,9 +42,7 @@ requirements:
     mongodb:
       title: "MongoDB with Sacred Data"
       icon: "fa-solid fa-database"
-      description: "A MongoDB instance containing Sacred experiments. Can be deployed using AltarDocker or any other MongoDB setup."
-      link: "docker"
-      link_text: "Deploy with AltarDocker"
+      description: "A MongoDB instance containing Sacred experiments. Any deployment works (local, server, or managed)."
     
     incense:
       title: "Incense (for scripts)"
@@ -58,7 +59,20 @@ requirements:
       link_text: "Read Docs"
 
 quick_start:
-  - title: "Option A: Standalone (recommended)"
+  - title: "Option A: From Binary Release (no setup)"
+    code: |
+      # Download the latest release for your OS:
+      # https://github.com/DreamRepo/AltarExtractor/releases
+
+      # Windows
+      # 1) Download and unzip the asset
+      # 2) Double-click AltarExtractor.exe
+
+      # Linux/macOS
+      chmod +x ./AltarExtractor   # may already be executable
+      ./AltarExtractor
+    content: "The app starts a local server at <code>http://localhost:8050</code> and opens your browser."
+  - title: "Option B: From Source (virtual environment)"
     code: |
       cd AltarExtractor
       python -m venv .venv
@@ -66,7 +80,7 @@ quick_start:
       pip install -r requirements.txt
       python app.py
     content: "Open <code>http://localhost:8050</code> in your browser."
-  - title: "Option B: Using Docker"
+  - title: "Option C: Using Docker"
     code: |
       cd AltarExtractor
       docker-compose up -d --build
@@ -74,18 +88,12 @@ quick_start:
   - title: "Connect to MongoDB"
     content: "Enter your MongoDB credentials or paste a full URI. Click <strong>Connect</strong> to start browsing experiments."
 
-environment_vars:
-  - label: "PORT"
-    value: "Port the app listens on (default: <code>8050</code>)"
-  - label: "SACRED_DB_NAME"
-    value: "Default database name (default: <code>sacred</code>)"
-
 related_tools:
-  - icon: "fa-solid fa-cubes"
-    title: "AltarDocker"
-    description: "Deploy MongoDB, MinIO, Omniboard, and AltarExtractor with Docker Compose."
-    link: "docker"
+  - icon: "fa-solid fa-tv"
+    title: "AltarViewer"
+    description: "Launch Omniboard and visualize your Sacred experiments in the browser."
+    link: "viewer"
   - icon: "fa-solid fa-paper-plane"
     title: "AltarSender"
-    description: "Send experiments to Sacred and artifacts to MinIO."
+    description: "Map experiment folders and send runs to MongoDB in a Sacred‑compatible format; optional artifacts to MinIO."
     link: "sender"
