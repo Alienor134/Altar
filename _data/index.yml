@@ -91,9 +91,9 @@ resource_finder:
       title: "Sacred Documentation"
       icon: "fa-solid fa-book"
       short_description: "Python framework for tracking experiments."
-      description: "Sacred is a Python framework that automatically tracks your experiments. When you run code with Sacred, it captures configuration parameters, random seeds, dependencies, and results - everything needed to reproduce your experiments. Sacred makes your experiments 'database-ready' by organizing all this information in a structured way that Altar can store and query."
-      link: "https://sacred.readthedocs.io/"
-      link_text: "Read Sacred Docs"
+      description: "Sacred is a Python framework that automatically tracks your experiments. It captures configuration, seeds, dependencies, metrics and results in a structured way that Altar can store and query."
+      link: "sacred"
+      link_text: "Read Quick Guide"
     
     sacred_paper:
       title: "Sacred Paper"
@@ -284,7 +284,6 @@ resource_finder:
     devops_tools:
       - docker
       - sacred
-      - sacred_paper
       - paper
       - altardocker
       - deploy_stack
@@ -306,11 +305,10 @@ resource_finder:
 
     dmp_tools:
       - paper
-      - sacred_paper
+      - sacred
 
     dmp_scripts:
       - paper
-      - sacred_paper
       - sacred
 
 

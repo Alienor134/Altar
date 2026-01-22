@@ -32,6 +32,11 @@ permalink: /search.json
       {% endcapture %}{{ index_text | markdownify | strip_html | strip_newlines | jsonify }}
     },
     {
+      "title": "Sacred — Concepts & Guide",
+      "url": {{ 'sacred' | relative_url | jsonify }},
+      "content": {% capture s_md %}{% include_relative sacred.md %}{% endcapture %}{{ s_md | markdownify | strip_html | strip_newlines | jsonify }}
+    },
+    {
       "title": {{ site.data.sender.meta.title | jsonify }},
       "url": {{ 'sender' | relative_url | jsonify }},
       "content": {% capture sender_text %}
