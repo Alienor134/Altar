@@ -18,22 +18,48 @@
   </head>
   
   <body>
-    <header class="site-header {{ page.header_class }}">
-      <nav class="nav">
-        <div class="brand">
-          <a href="{{ '/' | relative_url }}" class="brand-link">
-            <span class="logo" aria-hidden="true">◆</span>
-            <span class="brand-text">Altar</span>
-          </a>
-        </div>
-        <div class="nav-actions">
-          <button id="themeToggle" class="btn btn-ghost" aria-label="Toggle theme">🌙</button>
+    <!-- Sidebar navigation -->
+    <aside class="sidebar" aria-label="Documentation menu">
+      <div class="sidebar-brand">
+        <a href="{{ '/' | relative_url }}" class="brand-link">
+          <span class="logo" aria-hidden="true">◆</span>
+          <span class="brand-text">Altar</span>
+        </a>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="sidebar-section">Docs</div>
+        <a href="{{ '/' | relative_url }}">Installation</a>
+        <div class="sidebar-section">Tools</div>
+        <a href="{{ 'sender' | relative_url }}">Sender</a>
+        <a href="{{ 'viewer' | relative_url }}">Viewer</a>
+        <a href="{{ 'extractor' | relative_url }}">Extractor</a>
+        <div class="sidebar-section">Dev / Sysadmin</div>
+        <a href="{{ 'deploy' | relative_url }}">Deploy</a>
+        <a href="{{ 'manage' | relative_url }}">Manage Users</a>
+        <a href="{{ 'backup' | relative_url }}">Backup/Transfer</a>
+        <div class="sidebar-actions">
           <a class="btn btn-outline" href="{{ page.github_url | default: 'https://github.com/DreamRepo' }}">GitHub</a>
         </div>
       </nav>
+    </aside>
 
-      {{ content }}
-    </header>
+    <div class="content-with-sidebar">
+      <header class="site-header {{ page.header_class }}">
+        <nav class="nav">
+          <div class="brand">
+            <a href="{{ '/' | relative_url }}" class="brand-link">
+              <span class="logo" aria-hidden="true">◆</span>
+              <span class="brand-text">Altar</span>
+            </a>
+          </div>
+          <div class="nav-actions">
+            <a class="btn btn-outline" href="{{ page.github_url | default: 'https://github.com/DreamRepo' }}">GitHub</a>
+          </div>
+        </nav>
+
+        {{ content }}
+      </header>
+    </div>
 
     <script src="{{ '/assets/script.js' | relative_url }}"></script>
   </body>

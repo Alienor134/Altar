@@ -54,6 +54,9 @@ resource_finder:
     - id: "transfer"
       label: "Backup / migrate a database (eg. local to server)"
 
+    - id: "user_management"
+      label: "Manage users and permissions"
+
     
 
 
@@ -131,6 +134,30 @@ resource_finder:
       description: "AltarDocker is a Docker Compose configuration that sets up the complete Altar infrastructure stack with a single command. It launches MongoDB (for metadata), MinIO (for file storage), Omniboard (for visualization), and optionally AltarExtractor (for analysis). This is essential for both local development and team deployments. Includes user management and backup scripts."
       link: "docker"
       link_text: "Go to AltarDocker"
+
+    deploy_stack:
+      title: "Deploy (Docker Compose)"
+      icon: "fa-solid fa-cubes"
+      short_description: "Developer guide for deployment."
+      description: "Minimal guide pulled from AltarDocker/DEPLOY.md."
+      link: "deploy"
+      link_text: "Read guide"
+
+    manage_users:
+      title: "Manage Users"
+      icon: "fa-solid fa-user-gear"
+      short_description: "Administrative user management tasks."
+      description: "Minimal guide pulled from AltarDocker/MANAGE_USERS.md."
+      link: "manage"
+      link_text: "Read guide"
+
+    backup_db:
+      title: "Backup & Migration"
+      icon: "fa-solid fa-database"
+      short_description: "Procedures for backups and transfers."
+      description: "Minimal guide pulled from AltarDocker/BACKUP.md."
+      link: "backup"
+      link_text: "Read guide"
     
     paper:
       title: "Read the Altar Paper"
@@ -260,14 +287,18 @@ resource_finder:
       - sacred_paper
       - paper
       - altardocker
+      - deploy_stack
+      - manage_users
+      - backup_db
       - viewer
       - sender
       - extractor    
       
     devops_scripts:
       - docker
-      - mongodb
-      - altardocker
+      - deploy_stack
+      - manage_users
+      - backup_db
       - minio
       - omniboard
       - incense
@@ -284,10 +315,18 @@ resource_finder:
 
 
     transfer_tools:
-      - mongodb
+      - deploy_stack
+      - backup_db
 
     transfer_scripts:
-      - mongodb
+      - deploy_stack
+      - backup_db
+
+    online_tools:
+      - manage_users
+
+    online_scripts:
+      - manage_users
 
 hero:
   title: "Manage experiment data, end‑to‑end"
