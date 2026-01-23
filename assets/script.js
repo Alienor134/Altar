@@ -359,3 +359,41 @@
         container.innerHTML = '<p class="lead">Search is unavailable right now.</p>';
       });
   })();
+
+// Remote README fallback: fetch raw markdown from GitHub if available
+(function () {
+  const containers = document.querySelectorAll('.readme-remote');
+  if (!containers.length) return;
+
+  containers.forEach(async (el) => {
+    const repo = el.getAttribute('data-repo');
+    const branch = el.getAttribute('data-branch') || 'main';
+    let path = el.getAttribute('data-path') || '';
+    if (!repo || !path) return;
+
+    // If path contains a leading repo folder (e.g., AltarDocker/DEPLOY.md), strip it
+    try {
+      const repoName = repo.split('/').pop();
+      if (path.startsWith(repoName + '/')) {
+        path = path.substring(repoName.length + 1);
+      }
+    } catch (_) {}
+
+    const rawUrl = `https://raw.githubusercontent.com/${repo}/${branch}/${path}`;
+    try {
+      const res = await fetch(rawUrl, { cache: 'no-store' });
+      if (!res.ok) return; // leave server-rendered content
+      const md = await res.text();
+      if (typeof window.marked === 'function') {
+        el.innerHTML = window.marked.parse(md);
+      } else {
+        // Minimal safe fallback if marked is unavailable
+        const esc = md.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        el.innerHTML = `<pre>${esc}</pre>`;
+      }
+      el.style.display = 'block';
+    } catch (e) {
+      // Fail silently; server-side include likely succeeded
+    }
+  });
+})();
