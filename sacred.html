@@ -5,3 +5,6 @@ description: "A minimal overview of Sacred concepts with links to docs and paper
 github_url: "https://github.com/IDSIA/sacred"
 readme_path: "sacred.md"
 ---
+
+{% capture readme_content %}{% include_relative sacred.md %}{% endcapture %}
+{{ readme_content | markdownify }}

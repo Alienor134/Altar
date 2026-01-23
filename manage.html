@@ -4,5 +4,8 @@ title: "AltarDocker — Manage Users"
 description: "Administrative tasks for user management in the AltarDocker stack."
 data_file: manage
 github_url: "https://github.com/DreamRepo/AltarDocker"
-readme_path: "AltarDocker/MANAGE_USERS.md"
+readme_path: "docs/AltarDocker/MANAGE_USERS.md"
 ---
+
+{% capture readme_content %}{% include_relative docs/AltarDocker/MANAGE_USERS.md %}{% endcapture %}
+{{ readme_content | markdownify }}

@@ -390,14 +390,6 @@ tools:
       link: "extractor"
       linkText: "Learn more →"
 
-requirement:
-  title: "Requirement to run Altar"
-  icon: "fa-solid fa-cubes"
-  card_title: "AltarDocker"
-  description: "Docker Compose stack for <strong>MongoDB</strong>, <strong>MinIO</strong>, <strong>Omniboard</strong>, and <strong>AltarExtractor</strong> for local/dev."
-  docker_explanation: "<br><strong>What is Docker?</strong> Docker is like a virtual container that packages all the software Altar needs to run. Think of it as a complete workspace that works the same way on any computer — whether you're on Windows, Mac, or Linux.<br><br><strong>Why it helps:</strong> Instead of manually installing and configuring multiple programs (databases, servers, etc.), Docker does it all automatically in one command. This means less technical setup for you, and more time for your research.<br><br><a href=\"https://docs.docker.com/get-docker/\" target=\"_blank\">Install Docker Desktop here</a> (free for personal use)."
-  link: "docker"
-  linkText: "Learn more →"
 
 quick_start_noncoder:
   title: "Quick start for non-coders"

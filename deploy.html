@@ -4,5 +4,8 @@ title: "AltarDocker — Deploy"
 description: "How to deploy Altar services using Docker Compose."
 data_file: deploy
 github_url: "https://github.com/DreamRepo/AltarDocker"
-readme_path: "AltarDocker/DEPLOY.md"
+readme_path: "docs/AltarDocker/DEPLOY.md"
 ---
+
+{% capture readme_content %}{% include_relative docs/AltarDocker/DEPLOY.md %}{% endcapture %}
+{{ readme_content | markdownify }}
