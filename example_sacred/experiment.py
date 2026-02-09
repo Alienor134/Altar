@@ -55,5 +55,7 @@ def my_main(_run, _log):
     for i in range(len(y)):
         _run.log_scalar("y", y[i], x[i])
 
+    plt.close("all")
+
 
     
